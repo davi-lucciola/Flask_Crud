@@ -1,9 +1,10 @@
-from conf.engine import *
+from conf.config_engine import create_session, __engine
 from models.Produto import Produto
 
 
-def inserir(produto: Produto, engine: Engine):
-    with create_session(engine) as session:
+def insert(produto: Produto):
+    global __engine
+    with create_session(__engine) as session:
         try:
             session.add(produto)
         except Exception as err:
@@ -13,8 +14,9 @@ def inserir(produto: Produto, engine: Engine):
             session.commit()
             return True
 
-def select_all(engine: Engine):
-    with create_session(engine) as session:
+def select_all():
+    global __engine
+    with create_session(__engine) as session:
         try:
             query_all: list[Produto] = session.query(Produto)
         except Exception as err:

@@ -9,11 +9,10 @@ while True:
     name = input('Digite o nome do produto: ')
     price = input('Digite o preco do produto: ')
 
-
-    if inserir(Produto(nome=name, preco=price), engine):
+    if insert(Produto(nome=name, preco=price)):
         print('Produto adicionado com sucesso!')
     else:
         print('Não foi possivel adicionar o produto!')
 
 
-print(list(select_all(engine)))
+print(list(select_all()))
