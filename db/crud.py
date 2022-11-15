@@ -1,10 +1,9 @@
-from conf.config_engine import create_session, __engine
-from models.Produto import Produto
+from db.session_db import create_session
+from models.__all_models import *
 
 
-def insert(produto: Produto):
-    global __engine
-    with create_session(__engine) as session:
+def insert(produto: Product):
+    with create_session() as session:
         try:
             session.add(produto)
         except Exception as err:
@@ -15,10 +14,9 @@ def insert(produto: Produto):
             return True
 
 def select_all():
-    global __engine
-    with create_session(__engine) as session:
+    with create_session() as session:
         try:
-            query_all: list[Produto] = session.query(Produto)
+            query_all: list[Product] = session.query(Product)
         except Exception as err:
             raise err('Não foi possivel Selecionar Tudo')
         else:

@@ -8,7 +8,7 @@ from os import getenv
 
 
 # DBMS INFOS
-DB_CONFIG_PATH: str = './conf/env'
+DB_CONFIG_PATH: str = './conf/__env'
 DBMS: str = 'mysql'
 
 # Engine
@@ -18,12 +18,12 @@ __engine: Optional[Engine] = None
 # Functions
 def create_engine(dbms: str) -> None:
     '''
-    Create the global variable "conx_engine"
+    Create the global variable "__engine" to use in sqlalchemy
     '''
     global __engine
     if __engine: return
 
-    conx_str = connection_str(dbms)
+    conx_str: str = connection_str(dbms)
     # Creating Engine
     __engine = sa.create_engine(url=conx_str)
     create_tables()
@@ -43,22 +43,24 @@ def connection_str(dbms: str) -> str:
         user += ':' if password != '' else ''
         host += ':' if port != '' else ''
         conn_str = f'{dbms}+mysqlconnector://{user}{password}@{host}{port}/{database}'
+    elif dbms == 'sqlite':
+        conn_str = f'{dbms}:///{database}'
     
     return conn_str
 
-def create_session(engine: Engine) -> Session:
+def create_session(expire_on_commit = False) -> Session:
     '''
-    Create a session to create, update, read and delete data
+    Return a SQL Alchemy session to make a CRUD (Create, Read, Update and Delete)
     '''
     global __engine
     if not __engine: create_engine(DBMS)
 
-    SessionDB = sessionmaker(bind=__engine, expire_on_commit=True)
+    SessionDB = sessionmaker(bind=__engine, expire_on_commit=expire_on_commit)
     session: Session = SessionDB()
 
     return session
 
-def create_tables():
+def create_tables() -> None:
     global __engine
     from models.model_base import Base
     if __engine is not None:

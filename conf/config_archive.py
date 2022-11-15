@@ -25,12 +25,13 @@ def config_archive(database: str, db_config_path: str = 'env', host: str = '127.
         directory = '.'
         for pasta in pastas:
             directory += DIR_SEP + pasta
-            system(f'mkdir {directory}') # Creating directorys
+            if not path.isdir(directory):
+                system(f'mkdir {directory}') # Creating directorys
 
         amb_variables = [
             f'HOST={host}', 
-            f'USER_DB={user}', 
             f'PORT={port}', 
+            f'USER_DB={user}', 
             f'PASSWD={passwd}', 
             f'DB={database}'
         ]

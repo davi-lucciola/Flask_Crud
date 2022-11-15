@@ -1,15 +1,11 @@
-from sqlalchemy import Column, String, Integer, Float
-from models.model_base import *
+from sqlalchemy import Column, String, Integer, DECIMAL
+from models.model_base import Base
 
 
-class Produto(Base):
-    __tablename__: str = 'produtos'
+class Product(Base):
+    __tablename__ = 'products'
 
     id: int = Column(Integer, primary_key=True, autoincrement=True)
-    nome: str = Column(String(30), nullable=False)
-    preco: float = Column(Float, nullable=False)
-
-    def __repr__(self) -> str:
-        return f'< {self.nome} - R${self.preco} >'
-
-    
+    product: str = Column(String(30), nullable=False)
+    price: float = Column(DECIMAL(6, 2), nullable=False)
+    description: str = Column(String(60))

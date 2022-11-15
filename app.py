@@ -1,5 +1,5 @@
 from flask import *
-from models.Produto import *
+from models.__all_models import *
 from db.crud import *
 
 
@@ -14,10 +14,10 @@ def index():
 def register():
     name = request.form.get('prod_name')
     price = request.form.get('price')
-    if inserir(Produto(nome=name, preco=price), engine) and name != '':
-        return render_template('success.html')
-    else:
-        return render_template('error.html')
+    if price != '' and name != '':
+        if insert(Product(product=name, price=price)):
+            return render_template('success.html')
+    return render_template('error.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
