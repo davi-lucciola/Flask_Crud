@@ -64,7 +64,7 @@ def create_tables() -> None:
     global __engine
     from models.model_base import Base
     if __engine is not None:
-        if not sa.inspect(__engine).has_table('produtos'): 
+        if not sa.inspect(__engine).has_table('products'): 
             Base.metadata.create_all(bind=__engine)
 
 
