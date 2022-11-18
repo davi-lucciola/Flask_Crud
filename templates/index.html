@@ -1,20 +1,18 @@
 {% extends "layout.html" %}
 
 {% block main %}
-    <div id="app" style="text-align: center; margin-top: 20vh;">
-        <h1> Cadastro de Produtos </h1>
-        <form action="/register" method="POST">
-            <div class="entry">
-                <label for="prod_name"> Produto </label> <br>
-                <input type="text" name="prod_name">    
-            </div>
-            
-            <div class="entry">
-                <label for="price"> Preço </label> <br>
-                <input type="number" min="1" step="any" name="price" >
-            </div>
-
-            <input type="submit">
-        </form>
-    </div>
+    <h1> Cadastro de Produtos </h1>
+    <form action="/register" method="POST">
+        <div class="entry">
+            <label for="prod_name"> Produto </label>
+            <input type="text" name="prod_name" placeholder="Produto">    
+        </div>
+        
+        <div class="entry">
+            <label for="price"> Preço </label>
+            <input type="number" min="1" step="any" name="price" placeholder="R$">
+        </div>
+    
+        <input class="button" type="submit" value="Cadastrar">
+    </form>
 {% endblock %}

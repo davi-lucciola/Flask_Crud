@@ -4,15 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <title> Flask Crud </title>
 </head>
 <body style="margin: 0;">
-    <header style="width: 100%; height: 10vh; background: blue;">
-
+    <header>
+        <ul>
+            <a href="">
+                <li> Home </li>
+            </a>
+            <a href="">
+                <li> Listar Produtos </li>
+            </a>
+            <a href="">
+                <li> Cadastrar Produto </li>
+            </a>
+            <a href="">
+                <li> Atualizar Produto </li>
+            </a>
+            <a href="">
+                <li> Deletar Produtos </li>
+            </a>
+        </ul>
     </header>
     <main>
-        {% block main %}
-        {% endblock %}
+        <div id="app">
+            {% block main %}
+            {% endblock %}
+        </div>
     </main>
 </body>
 </html>
