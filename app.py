@@ -9,15 +9,15 @@ app = Flask(__name__)
 # Pages Endpoints
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('home.html')
+    return render_template('home.html', title='Home')
 
 @app.route('/cadastrar_produto', methods=['GET'])
 def cadastrar_produto():
-    return render_template('cadastrar_produtos.html')
+    return render_template('cadastrar_produtos.html', title='Cadastrar Produtos')
 
 @app.route('/produtos_cadastrados', methods=['GET'])
 def listar_produtos():
-    pass
+    return render_template('listar_produtos.html', produtos=select_all())
 
 @app.route('/atualizar produto:')
 

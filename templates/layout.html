@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-    <title> Flask Crud </title>
+    <title> {{ title }} </title>
 </head>
 <body style="margin: 0;">
     <header>
         <div id="menubar">
             <ul>
                 <a href="/"> <li> Home </li> </a>
-                <a href=""> <li> Listar Produtos </li> </a>
+                <a href="/produtos_cadastrados"> <li> Listar Produtos </li> </a>
                 <a href="/cadastrar_produto"> <li> Cadastrar Produto </li> </a>
                 <a href=""> <li> Atualizar Produto </li> </a>
                 <a href=""> <li> Deletar Produtos </li> </a>

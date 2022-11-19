@@ -16,7 +16,7 @@ def insert(produto: Product):
 def select_all():
     with create_session() as session:
         try:
-            query_all: list[Product] = session.query(Product)
+            query_all: list[Product] = session.query(Product).all()
         except Exception as err:
             raise err('Não foi possivel Selecionar Tudo')
         else:
