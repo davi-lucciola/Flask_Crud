@@ -10,6 +10,7 @@ from os import getenv
 # DBMS INFOS
 DB_CONFIG_PATH: str = './conf/__env'
 DBMS: str = 'mysql'
+DATABASE: str = 'loja'
 
 # Engine
 __engine: Optional[Engine] = None
@@ -44,7 +45,7 @@ def connection_str(dbms: str) -> str:
         host += ':' if port != '' else ''
         conn_str = f'{dbms}+mysqlconnector://{user}{password}@{host}{port}/{database}'
     elif dbms == 'sqlite':
-        conn_str = f'{dbms}:///{database}'
+        conn_str = f'{dbms}:///{database}.db'
     
     return conn_str
 
@@ -69,5 +70,5 @@ def create_tables() -> None:
 
 
 if __name__ != '__main__':
-    config_archive(database='loja', db_config_path=DB_CONFIG_PATH)
+    config_archive(database=DATABASE, db_config_path=DB_CONFIG_PATH)
     load_dotenv(DB_CONFIG_PATH)
