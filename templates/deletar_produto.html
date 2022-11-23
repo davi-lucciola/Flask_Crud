@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div id="app">
+        <form action="/delete" method="POST">
+            <div class="entry">
+                <label for="id">ID</label>
+                <input type="number" name="id" placeholder="ID">
+            </div>
+
+            <input class="button" type="submit" value="Deletar">
+        </form>
+    </div>
+{% endblock %}

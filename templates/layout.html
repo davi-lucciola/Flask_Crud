@@ -14,16 +14,14 @@
                 <a href="/"> <li> Home </li> </a>
                 <a href="/produtos_cadastrados"> <li> Listar Produtos </li> </a>
                 <a href="/cadastrar_produto"> <li> Cadastrar Produto </li> </a>
-                <a href=""> <li> Atualizar Produto </li> </a>
-                <a href=""> <li> Deletar Produtos </li> </a>
+                <a href="/atualizar_produto"> <li> Atualizar Produto </li> </a>
+                <a href="/deletar_produto"> <li> Deletar Produtos </li> </a>
             </ul>
         </div>
     </header>
     <main>
-        <div id="app">
-            {% block main %}
-            {% endblock %}
-        </div>
+        {% block main %}
+        {% endblock %}
     </main>
 </body>
 </html>

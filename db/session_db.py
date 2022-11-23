@@ -48,7 +48,7 @@ def connection_str(dbms: str) -> str:
     
     return conn_str
 
-def create_session(expire_on_commit = False) -> Session:
+def create_session(expire_on_commit = True) -> Session:
     '''
     Return a SQL Alchemy session to make a CRUD (Create, Read, Update and Delete)
     '''

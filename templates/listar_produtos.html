@@ -1,19 +1,21 @@
 {% extends "layout.html" %}
 
 {% block main %}
-    <table>
-        <tr>
-            <th> id </th>
-            <th> produto </th>
-            <th> preço </th>
-        </tr>
-        {% for produto in produtos %}
+    <div id="app">
+        <table>
             <tr>
-                <td> {{ produto.id }}</td>    
-                <td> {{ produto.product }}</td>    
-                <td> R${{ produto.price }} </td>
-            </tr>    
-        {% endfor %}
+                <th> id </th>
+                <th> produto </th>
+                <th> preço </th>
+            </tr>
+            {% for produto in produtos %}
+                <tr>
+                    <td> {{ produto.id }}</td>
+                    <td> {{ produto.product }}</td>
+                    <td> R${{ produto.price }} </td>
+                </tr>
+            {% endfor %}
         
-    </table>
+        </table>
+    </div>
 {% endblock %}
